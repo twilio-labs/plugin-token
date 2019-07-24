@@ -1,12 +1,14 @@
-@twilio/plugin-debugger
+@twilio/plugin-token
 ========================
 
-Access and stream your Twilio debugger logs.
+Generate a temporary token for use in a Twilio client-side SDK application
 
 <!-- toc -->
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
+# Requirements
+
 ## Setup
 
 Head over to the [twilio-cli documentation](https://www.twilio.com/docs/twilio-cli/quickstart).
@@ -14,12 +16,12 @@ Head over to the [twilio-cli documentation](https://www.twilio.com/docs/twilio-c
 # Usage
 
 ```sh-session
-$ twilio --help debugger
+$ twilio plugins:install @twilio-labs/plugin-serverless
+$ twilio --help serverless
 USAGE
-  $ twilio debugger
+  $ twilio serverless
 ...
 ```
-
 # Commands
 <!-- commands -->
 * [`twilio debugger:logs:list`](#twilio-debuggerlogslist)
@@ -52,3 +54,14 @@ DESCRIPTION
 
 _See code: [src/commands/debugger/logs/list.js](https://github.com/twilio/plugin-debugger/blob/v1.1.4/src/commands/debugger/logs/list.js)_
 <!-- commandsstop -->
+#  Contributing
+
+This project welcomes contributions from the community. Please see the [`CONTRIBUTING.md`](CONTRIBUTING.md) file for more details.
+
+## Code of Conduct
+
+Please be aware that this project has a [Code of Conduct](https://github.com/twilio-labs/.github/blob/master/CODE_OF_CONDUCT.md). The tldr; is to just be excellent to each other ❤️
+
+# License
+
+MIT
