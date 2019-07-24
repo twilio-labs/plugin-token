@@ -1,0 +1,64 @@
+{
+  "name": "@twilio/plugin-token",
+  "description": "Generate a Chat token for use in test applications",
+  "version": "1.1.4",
+  "author": "Twilio @twilio",
+  "bugs": "https://github.com/twilio/twilio-cli/issues",
+  "dependencies": {
+    "@oclif/command": "^1.5.16",
+    "@oclif/config": "^1.13.1",
+    "@twilio/cli-core": "^2.0.2"
+  },
+  "devDependencies": {
+    "@oclif/command": "^1.5.16",
+    "@oclif/config": "^1.13.1",
+    "@oclif/dev-cli": "^1.22.0",
+    "@oclif/test": "^1.2.4",
+    "@twilio/cli-test": "^1.0.0",
+    "chai": "^4.2.0",
+    "eslint": "^4.19.1",
+    "eslint-config-oclif": "^1.5.1",
+    "globby": "^8.0.2",
+    "keytar": "^4.11.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src",
+    "/yarn.lock"
+  ],
+  "homepage": "https://github.com/twilio/plugin-token",
+  "keywords": [
+    "oclif-plugin"
+  ],
+  "license": "MIT",
+  "oclif": {
+    "name": "token",
+    "commands": "./src/commands",
+    "bin": "twilio",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "topics": {
+      "token": {
+        "description": "Generate a token"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twilio/plugin-token.git"
+  },
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint --ignore-path .gitignore . && npm audit",
+    "prepack": "oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\"",
+    "version": "oclif-dev readme && git add README.md"
+  }
+}
