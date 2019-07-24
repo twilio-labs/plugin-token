@@ -4,8 +4,11 @@
 Generate a temporary token for use in a Twilio client-side SDK application
 
 <!-- toc -->
+* [Requirements](#requirements)
 * [Usage](#usage)
 * [Commands](#commands)
+* [ Contributing](#contributing)
+* [License](#license)
 <!-- tocstop -->
 # Requirements
 
@@ -24,35 +27,23 @@ USAGE
 ```
 # Commands
 <!-- commands -->
-* [`twilio debugger:logs:list`](#twilio-debuggerlogslist)
+* [`twilio token:chat`](#twilio-tokenchat)
 
-## `twilio debugger:logs:list`
-
-Show a list of log events generated for the account
+## `twilio token:chat`
 
 ```
 USAGE
-  $ twilio debugger:logs:list
+  $ twilio token:chat
 
 OPTIONS
-  -l=(debug|info|warn|error|none)           [default: info] Level of logging messages.
-  -o=(columns|json|tsv)                     [default: columns] Format of command output.
-  -p, --project=project                     Shorthand identifier for your Twilio project.
-  -s, --streaming                           Continuously stream incoming log events
-  --end-date=end-date                       Only show log events on or before this date
-  --log-level=(error|warning|notice|debug)  Only show log events for this log level
-
-  --properties=properties                   [default: dateCreated, logLevel, errorCode, alertText] The event properties
-                                            you would like to display (JSON output always shows all properties)
-
-  --start-date=start-date                   Only show log events on or after this date
-
-DESCRIPTION
-  Argg, this is only a subset of the log events and live tailing isn't quite ready! Think this is a killer feature? Let 
-  us know here: https://bit.ly/twilio-cli-feedback
+  -l=(debug|info|warn|error|none)      [default: info] Level of logging messages.
+  -o=(columns|json|tsv)                [default: columns] Format of command output.
+  -p, --project=project                Shorthand identifier for your Twilio project.
+  --chat-service-sid=chat-service-sid  (required) The service SID for the Chat, starts with ISXXX
+  --identity=identity                  (required) The user identity for this Chat
 ```
 
-_See code: [src/commands/debugger/logs/list.js](https://github.com/twilio/plugin-debugger/blob/v1.1.4/src/commands/debugger/logs/list.js)_
+_See code: [src/commands/token/chat.js](https://github.com/twilio/plugin-token/blob/v1.1.4/src/commands/token/chat.js)_
 <!-- commandsstop -->
 #  Contributing
 

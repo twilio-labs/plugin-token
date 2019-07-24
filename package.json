@@ -1,6 +1,6 @@
 {
   "name": "@twilio/plugin-token",
-  "description": "Generate a Chat token for use in test applications",
+  "description": "Generate a temporary token for use in test applications",
   "version": "1.1.4",
   "author": "Twilio @twilio",
   "bugs": "https://github.com/twilio/twilio-cli/issues",
@@ -46,7 +46,10 @@
     ],
     "topics": {
       "token": {
-        "description": "Generate a token"
+        "description": "Generate a temporary token for use in test applications"
+      },
+      "token:chat": {
+        "description": "Generate token for use in Chat applications"
       }
     }
   },
