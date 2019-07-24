@@ -10,21 +10,32 @@ class ChatTokenGenerator extends TwilioClientCommand {
     this.showHeaders = true;
   }
 
+  validateChatServiceSid() {
+    return (
+      this.flags['chat-service-sid'].startsWith('IS') &&
+      this.flags['chat-service-sid'].length === 34
+    );
+  }
   async runCommand() {
-    this.logger.info('Copy/paste this chat token into your test application:');
     const accessToken = new Twilio.jwt.AccessToken(
       this.twilioClient.accountSid,
       this.twilioClient.username,
       this.twilioClient.password
     );
 
-    let chatGrant = new Twilio.jwt.AccessToken.ChatGrant({
-      serviceSid: this.flags['chat-service-sid'],
-    });
+    if (this.validateChatServiceSid()) {
+      let chatGrant = new Twilio.jwt.AccessToken.ChatGrant({
+        serviceSid: this.flags['chat-service-sid'],
+      });
+    } else {
+      this.logger.error("Invalid Chat Service SID, must look like ISxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+      process.exit(1);
+    }
 
     accessToken.addGrant(chatGrant);
     accessToken.identity = this.flags['identity'];
 
+    this.logger.info('Copy/paste this chat token into your test application:');
     this.output({ jwt: accessToken.toJwt() }, undefined, {
       showHeaders: false,
     });
