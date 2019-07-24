@@ -35,7 +35,7 @@
     "/src",
     "/yarn.lock"
   ],
-  "homepage": "https://github.com/twilio/plugin-token",
+  "homepage": "https://github.com/twilio-labs/plugin-token",
   "keywords": [
     "oclif-plugin"
   ],
