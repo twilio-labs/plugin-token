@@ -43,7 +43,7 @@ OPTIONS
   --identity=identity                  (required) The user identity for this Chat
 ```
 
-_See code: [src/commands/token/chat.js](https://github.com/twilio/plugin-token/blob/v1.1.4/src/commands/token/chat.js)_
+_See code: [src/commands/token/chat.js](https://github.com/twilio/plugin-token/blob/v1.0.0/src/commands/token/chat.js)_
 <!-- commandsstop -->
 #  Contributing
 
