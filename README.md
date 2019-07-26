@@ -19,10 +19,10 @@ Head over to the [twilio-cli documentation](https://www.twilio.com/docs/twilio-c
 # Usage
 
 ```sh-session
-$ twilio plugins:install @twilio-labs/plugin-serverless
-$ twilio --help serverless
+$ twilio plugins:install @twilio-labs/plugin-token
+$ twilio --help token
 USAGE
-  $ twilio serverless
+  $ twilio token
 ...
 ```
 # Commands
@@ -43,7 +43,7 @@ OPTIONS
   --identity=identity                  (required) The user identity for this Chat
 ```
 
-_See code: [src/commands/token/chat.js](https://github.com/twilio/plugin-token/blob/v1.0.3/src/commands/token/chat.js)_
+_See code: [src/commands/token/chat.js](https://github.com/twilio-labs/plugin-token/blob/v1.0.3/src/commands/token/chat.js)_
 <!-- commandsstop -->
 #  Contributing
 
