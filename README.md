@@ -38,7 +38,7 @@ USAGE
 OPTIONS
   -l=(debug|info|warn|error|none)      [default: info] Level of logging messages.
   -o=(columns|json|tsv)                [default: columns] Format of command output.
-  -p, --project=project                Shorthand identifier for your Twilio project.
+  -p, --profile=profile                Shorthand identifier for your Twilio profile.
   --chat-service-sid=chat-service-sid  (required) The service SID for the Chat, starts with ISXXX
   --identity=identity                  (required) The user identity for this Chat
 ```
