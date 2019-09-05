@@ -2,8 +2,9 @@ const { flags } = require('@oclif/command');
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const { TwilioCliError } = require('@twilio/cli-core').services.error;
 const Twilio = require('twilio');
-const createToken = require('../../helpers/accessToken.js');
-const globalFlags = require('../../helpers/globalFlags.js');
+const createToken = require('../../../helpers/accessToken.js');
+const globalFlags = require('../../../helpers/globalFlags.js');
+const { voiceFlags, validateTwimlAppSid } = require('../../../helpers/voiceGlobals.js');
 
 class VoiceTokenGenerator extends TwilioClientCommand {
   constructor(argv, config, secureStorage) {
@@ -12,17 +13,10 @@ class VoiceTokenGenerator extends TwilioClientCommand {
     this.showHeaders = true;
   }
 
-  validateTwimlAppSid() {
-    return (
-      this.flags['voice-app-sid'].startsWith('AP') &&
-      this.flags['voice-app-sid'].length === 34
-    );
-  }
-
   async runCommand() {
     const accessToken = createToken.call(this);
 
-    if (!this.validateTwimlAppSid()) {
+    if (!validateTwimlAppSid(this.flags['voice-app-sid'])) {
       this.logger.error(
         'Invalid TwiML Application SID, must look like APxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
@@ -43,26 +37,9 @@ class VoiceTokenGenerator extends TwilioClientCommand {
   }
 }
 
-const VoiceTokenGeneratorFlags = {
-  identity: flags.string({
-    description: 'The user identity for this Voice Client',
-    required: true,
-  }),
-  'voice-app-sid': flags.string({
-    description: 'The TwiML Application SID for outbound calls, starts with APXXX',
-    required: true,
-  }),
-  'allow-incoming': flags.string({
-    description: 'Allow incoming calls (true/false) (defaults to true)',
-    options: ['true', 'false'],
-    default: 'true',
-    required: false
-  })
-};
-
 VoiceTokenGenerator.flags = Object.assign(
-  VoiceTokenGeneratorFlags,
   TwilioClientCommand.flags,
-  globalFlags
+  globalFlags,
+  voiceFlags
 );
 module.exports = VoiceTokenGenerator;

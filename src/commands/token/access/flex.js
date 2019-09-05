@@ -2,8 +2,8 @@ const { flags } = require('@oclif/command');
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const { TwilioCliError } = require('@twilio/cli-core').services.error;
 const Twilio = require('twilio');
-const createToken = require('../../helpers/accessToken.js');
-const globalFlags = require('../../helpers/globalFlags.js');
+const createToken = require('../../../helpers/accessToken.js');
+const globalFlags = require('../../../helpers/globalFlags.js');
 
 class FlexTokenGenerator extends TwilioClientCommand {
   constructor(argv, config, secureStorage) {
@@ -68,11 +68,12 @@ const FlexTokenGeneratorFlags = {
   })
 };
 
-delete globalFlags['identity'];
+let globals = {...globalFlags};
+delete globals.identity;
 
 FlexTokenGenerator.flags = Object.assign(
   FlexTokenGeneratorFlags,
   TwilioClientCommand.flags,
-  globalFlags
+  globals
 );
 module.exports = FlexTokenGenerator;
