@@ -27,13 +27,13 @@ USAGE
 ```
 # Commands
 <!-- commands -->
-* [`twilio token:access:chat`](#twilio-tokenchat)
+* [`twilio token:chat`](#twilio-tokenchat)
 
-## `twilio token:access:chat`
+## `twilio token:chat`
 
 ```
 USAGE
-  $ twilio token:access:chat
+  $ twilio token:chat
 
 OPTIONS
   -l=(debug|info|warn|error|none)      [default: info] Level of logging messages.
@@ -44,15 +44,15 @@ OPTIONS
   --ttl                                (optional) max 24 hour ttl for token (in seconds)
 ```
 
-_See code: [src/commands/token/access/chat.js](https://github.com/twilio-labs/plugin-token/blob/v2.0.0/src/commands/token/access/chat.js)_
+_See code: [src/commands/token/chat.js](https://github.com/twilio-labs/plugin-token/blob/v2.0.0/src/commands/token/chat.js)_
 
-* [`twilio token:access:video`](#twilio-tokenvideo)
+* [`twilio token:video`](#twilio-tokenvideo)
 
-## `twilio token:access:video`
+## `twilio token:video`
 
 ```
 USAGE
-  $ twilio token:access:video
+  $ twilio token:video
 
 OPTIONS
   -l=(debug|info|warn|error|none)      [default: info] Level of logging messages.
@@ -63,15 +63,15 @@ OPTIONS
   --ttl                                (optional) max 24 hour ttl for token (in seconds)
 ```
 
-_See code: [src/commands/token/access/video.js](https://github.com/twilio-labs/plugin-token/blob/v2.0.0/src/commands/token/access/video.js)_
+_See code: [src/commands/token/video.js](https://github.com/twilio-labs/plugin-token/blob/v2.0.0/src/commands/token/video.js)_
 
-* [`twilio token:access:voice`](#twilio-tokenvoice)
+* [`twilio token:voice`](#twilio-tokenvoice)
 
-## `twilio token:access:voice`
+## `twilio token:voice`
 
 ```
 USAGE
-  $ twilio token:access:voice
+  $ twilio token:voice
 
 OPTIONS
   -l=(debug|info|warn|error|none)      [default: info] Level of logging messages.
@@ -83,16 +83,16 @@ OPTIONS
   --ttl                                (optional) max 24 hour ttl for token (in seconds)
 ```
 
-_See code: [src/commands/token/access/voice.js](https://github.com/twilio-labs/plugin-token/blob/v2.0.0/src/commands/token/access/voice.js)_
+_See code: [src/commands/token/voice.js](https://github.com/twilio-labs/plugin-token/blob/v2.0.0/src/commands/token/voice.js)_
 
-* [`twilio token:access:flex`](#twilio-tokenflex)
+* [`twilio token:flex`](#twilio-tokenflex)
 
-## `twilio token:access:flex`
+## `twilio token:flex`
 
 ```
 (V2 TaskRouter)
 USAGE
-  $ twilio token:access:flex
+  $ twilio token:flex
 
 OPTIONS
   -l=(debug|info|warn|error|none)      [default: info] Level of logging messages.
@@ -104,6 +104,8 @@ OPTIONS
 ```
 
 _See code: [src/commands/token/capability/flex.js](https://github.com/twilio-labs/plugin-token/blob/v2.0.0/src/commands/token/capability/flex.js)_
+
+##BIG NOTE! Capability tokens can't be generated with an API Key and API Secret. You will only be able to generate these if you have your Account SID and Auth Token stored as environment variables and aren't using profiles. https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html for details on how.
 
 * [`twilio token:capability:client`](#twilio-tokenclient)
 

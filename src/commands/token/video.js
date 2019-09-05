@@ -2,8 +2,8 @@ const { flags } = require('@oclif/command');
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const { TwilioCliError } = require('@twilio/cli-core').services.error;
 const Twilio = require('twilio');
-const createToken = require('../../../helpers/accessToken.js');
-const globalFlags = require('../../../helpers/globalFlags.js');
+const createToken = require('../../helpers/accessToken.js');
+const globalFlags = require('../../helpers/globalFlags.js');
 
 class VideoTokenGenerator extends TwilioClientCommand {
   constructor(argv, config, secureStorage) {
