@@ -38,8 +38,8 @@ class VoiceTokenGenerator extends TwilioClientCommand {
 }
 
 VoiceTokenGenerator.flags = Object.assign(
+  voiceFlags,
   TwilioClientCommand.flags,
   globalFlags,
-  voiceFlags
 );
 module.exports = VoiceTokenGenerator;

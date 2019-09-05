@@ -2,7 +2,7 @@ const { flags } = require('@oclif/command');
 
 const globalFlags = {
   identity: flags.string({
-    description: 'The user identity for this Voice Client',
+    description: 'The user identity',
     required: true,
   }),
   ttl: flags.integer({

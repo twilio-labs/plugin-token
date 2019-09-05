@@ -4,6 +4,7 @@ const { TwilioCliError } = require('@twilio/cli-core').services.error;
 const Twilio = require('twilio');
 const createToken = require('../../../helpers/accessToken.js');
 const globalFlags = require('../../../helpers/globalFlags.js');
+const { taskrouterFlags, validateWorkerSid, validateWorkspaceSid } = require('../../../helpers/taskrouterGlobals.js');
 
 class FlexTokenGenerator extends TwilioClientCommand {
   constructor(argv, config, secureStorage) {
@@ -12,31 +13,17 @@ class FlexTokenGenerator extends TwilioClientCommand {
     this.showHeaders = true;
   }
 
-  validateWorkerSid() {
-    return (
-      this.flags['worker-sid'].startsWith('WK') &&
-      this.flags['worker-sid'].length === 34
-    );
-  }
-
-  validateWorkspaceSid() {
-    return (
-      this.flags['workspace-sid'].startsWith('WS') &&
-      this.flags['workspace-sid'].length === 34
-    );
-  }
-
   async runCommand() {
     const accessToken = createToken.call(this);
 
-    if (!this.validateWorkerSid()) {
+    if (!validateWorkerSid(this.flags['worker-sid'])) {
       this.logger.error(
         'Invalid Worker SID, must look like WKxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
       process.exit(1);
     }
 
-    if (!this.validateWorkspaceSid()) {
+    if (!validateWorkspaceSid(this.flags['workspace-sid'])) {
       this.logger.error(
         'Invalid Workspace SID, must look like WSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
@@ -57,23 +44,12 @@ class FlexTokenGenerator extends TwilioClientCommand {
   }
 }
 
-const FlexTokenGeneratorFlags = {
-  'worker-sid': flags.string({
-    description: 'The Worker SID for this token',
-    required: true,
-  }),
-  'workspace-sid': flags.string({
-    description: 'The Workspace SID for this token',
-    required: true,
-  })
-};
-
 let globals = {...globalFlags};
 delete globals.identity;
 
 FlexTokenGenerator.flags = Object.assign(
-  FlexTokenGeneratorFlags,
+  taskrouterFlags,
   TwilioClientCommand.flags,
-  globals
+  globals,
 );
 module.exports = FlexTokenGenerator;

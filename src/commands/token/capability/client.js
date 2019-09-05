@@ -44,8 +44,8 @@ class ClientCapabilityTokenGenerator extends TwilioClientCommand {
 }
 
 ClientCapabilityTokenGenerator.flags = Object.assign(
+  voiceFlags,
   TwilioClientCommand.flags,
   globalFlags,
-  voiceFlags
 );
 module.exports = ClientCapabilityTokenGenerator;
