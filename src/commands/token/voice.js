@@ -2,6 +2,8 @@ const { flags } = require('@oclif/command');
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const { TwilioCliError } = require('@twilio/cli-core').services.error;
 const Twilio = require('twilio');
+const createToken = require('../../helpers/accessToken.js');
+const globalFlags = require('../../helpers/globalFlags.js');
 
 class VoiceTokenGenerator extends TwilioClientCommand {
   constructor(argv, config, secureStorage) {
@@ -18,11 +20,7 @@ class VoiceTokenGenerator extends TwilioClientCommand {
   }
 
   async runCommand() {
-    const accessToken = new Twilio.jwt.AccessToken(
-      this.twilioClient.accountSid,
-      this.twilioClient.username,
-      this.twilioClient.password
-    );
+    const accessToken = createToken.call(this);
 
     if (!this.validateTwimlAppSid()) {
       this.logger.error(
@@ -37,7 +35,6 @@ class VoiceTokenGenerator extends TwilioClientCommand {
       incomingAllow
     });
     accessToken.addGrant(voiceGrant);
-    accessToken.identity = this.flags['identity'];
 
     this.logger.info('Copy/paste this voice token into your test application:');
     this.output({ jwt: accessToken.toJwt() }, undefined, {
@@ -65,6 +62,7 @@ const VoiceTokenGeneratorFlags = {
 
 VoiceTokenGenerator.flags = Object.assign(
   VoiceTokenGeneratorFlags,
-  TwilioClientCommand.flags
+  TwilioClientCommand.flags,
+  globalFlags
 );
 module.exports = VoiceTokenGenerator;

@@ -2,6 +2,8 @@ const { flags } = require('@oclif/command');
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const { TwilioCliError } = require('@twilio/cli-core').services.error;
 const Twilio = require('twilio');
+const createToken = require('../../helpers/accessToken.js');
+const globalFlags = require('../../helpers/globalFlags.js');
 
 class ChatTokenGenerator extends TwilioClientCommand {
   constructor(argv, config, secureStorage) {
@@ -17,11 +19,7 @@ class ChatTokenGenerator extends TwilioClientCommand {
     );
   }
   async runCommand() {
-    const accessToken = new Twilio.jwt.AccessToken(
-      this.twilioClient.accountSid,
-      this.twilioClient.username,
-      this.twilioClient.password
-    );
+    const accessToken = createToken.call(this);
 
     if (!this.validateChatServiceSid()) {
       this.logger.error(
@@ -29,11 +27,11 @@ class ChatTokenGenerator extends TwilioClientCommand {
       );
       process.exit(1);
     }
+
     let chatGrant = new Twilio.jwt.AccessToken.ChatGrant({
       serviceSid: this.flags['chat-service-sid'],
     });
     accessToken.addGrant(chatGrant);
-    accessToken.identity = this.flags['identity'];
 
     this.logger.info('Copy/paste this chat token into your test application:');
     this.output({ jwt: accessToken.toJwt() }, undefined, {
@@ -55,6 +53,7 @@ const ChatTokenGeneratorFlags = {
 
 ChatTokenGenerator.flags = Object.assign(
   ChatTokenGeneratorFlags,
-  TwilioClientCommand.flags
+  TwilioClientCommand.flags,
+  globalFlags
 );
 module.exports = ChatTokenGenerator;

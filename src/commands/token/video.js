@@ -2,6 +2,8 @@ const { flags } = require('@oclif/command');
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const { TwilioCliError } = require('@twilio/cli-core').services.error;
 const Twilio = require('twilio');
+const createToken = require('../../helpers/accessToken.js');
+const globalFlags = require('../../helpers/globalFlags.js');
 
 class VideoTokenGenerator extends TwilioClientCommand {
   constructor(argv, config, secureStorage) {
@@ -11,16 +13,11 @@ class VideoTokenGenerator extends TwilioClientCommand {
   }
 
   async runCommand() {
-    const accessToken = new Twilio.jwt.AccessToken(
-      this.twilioClient.accountSid,
-      this.twilioClient.username,
-      this.twilioClient.password
-    );
+    const accessToken = createToken.call(this);
 
     let room = this.flags['room-name'];
     let videoGrant = new Twilio.jwt.AccessToken.VideoGrant({ room });
     accessToken.addGrant(videoGrant);
-    accessToken.identity = this.flags['identity'];
 
     this.logger.info('Copy/paste this video token into your test application:');
     this.output({ jwt: accessToken.toJwt() }, undefined, {
@@ -30,10 +27,6 @@ class VideoTokenGenerator extends TwilioClientCommand {
 }
 
 const VideoTokenGeneratorFlags = {
-  identity: flags.string({
-    description: 'The user identity for this Video room',
-    required: true,
-  }),
   'room-name': flags.string({
     description: 'The name of the room this token grants access to',
     required: false,
@@ -42,6 +35,7 @@ const VideoTokenGeneratorFlags = {
 
 VideoTokenGenerator.flags = Object.assign(
   VideoTokenGeneratorFlags,
-  TwilioClientCommand.flags
+  TwilioClientCommand.flags,
+  globalFlags
 );
 module.exports = VideoTokenGenerator;
