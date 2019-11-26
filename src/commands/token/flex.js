@@ -13,7 +13,9 @@ class FlexTokenGenerator extends TwilioClientCommand {
     this.showHeaders = true;
   }
 
-  async runCommand() {
+  async run() {
+    await super.run();
+
     const accessToken = createToken.call(this);
 
     if (!validateWorkerSid(this.flags['worker-sid'])) {
@@ -44,7 +46,7 @@ class FlexTokenGenerator extends TwilioClientCommand {
   }
 }
 
-let globals = {...globalFlags};
+let globals = { ...globalFlags };
 delete globals.identity;
 
 FlexTokenGenerator.flags = Object.assign(

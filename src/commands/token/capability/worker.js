@@ -1,6 +1,4 @@
-const { flags } = require('@oclif/command');
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
-const { TwilioCliError } = require('@twilio/cli-core').services.error;
 const globalFlags = require('../../../helpers/globalFlags.js');
 const { taskrouterFlags, validateWorkerSid, validateWorkspaceSid } = require('../../../helpers/taskrouterGlobals.js');
 const taskrouter = require('twilio').jwt.taskrouter;
@@ -15,7 +13,9 @@ class WorkerCapabilityTokenGenerator extends TwilioClientCommand {
     this.showHeaders = true;
   }
 
-  async runCommand() {
+  async run() {
+    await super.run();
+
     const TASKROUTER_BASE_URL = 'https://taskrouter.twilio.com';
     const version = 'v1';
 
@@ -88,7 +88,7 @@ class WorkerCapabilityTokenGenerator extends TwilioClientCommand {
   }
 }
 
-let globals = {...globalFlags};
+let globals = { ...globalFlags };
 delete globals.identity;
 
 WorkerCapabilityTokenGenerator.flags = Object.assign(

@@ -1,6 +1,5 @@
 const { flags } = require('@oclif/command');
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
-const { TwilioCliError } = require('@twilio/cli-core').services.error;
 const Twilio = require('twilio');
 const createToken = require('../../helpers/accessToken.js');
 const globalFlags = require('../../helpers/globalFlags.js');
@@ -18,7 +17,10 @@ class ChatTokenGenerator extends TwilioClientCommand {
       this.flags['chat-service-sid'].length === 34
     );
   }
-  async runCommand() {
+
+  async run() {
+    await super.run();
+
     const accessToken = createToken.call(this);
 
     if (!this.validateChatServiceSid()) {
