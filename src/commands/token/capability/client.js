@@ -1,6 +1,4 @@
-const { flags } = require('@oclif/command');
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
-const { TwilioCliError } = require('@twilio/cli-core').services.error;
 const ClientCapability = require('twilio').jwt.ClientCapability;
 const globalFlags = require('../../../helpers/globalFlags.js');
 const { voiceFlags, validateTwimlAppSid } = require('../../../helpers/voiceGlobals.js');
@@ -12,7 +10,9 @@ class ClientCapabilityTokenGenerator extends TwilioClientCommand {
     this.showHeaders = true;
   }
 
-  async runCommand() {
+  async run() {
+    await super.run();
+
     let ttl = this.flags['ttl'];
     const capability = new ClientCapability({
       accountSid: this.twilioClient.accountSid,
@@ -29,7 +29,7 @@ class ClientCapabilityTokenGenerator extends TwilioClientCommand {
 
     capability.addScope(new ClientCapability.OutgoingClientScope({
       applicationSid: this.flags['voice-app-sid']
-    }))
+    }));
 
     let incomingAllow = (this.flags['allow-incoming'] == 'true');
     if (incomingAllow) {
