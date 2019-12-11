@@ -43,14 +43,14 @@ USAGE
 OPTIONS
   -l=(debug|info|warn|error|none)  [default: info] Level of logging messages.
   -o=(columns|json|tsv)            [default: columns] Format of command output.
-  -p, --profile=profile            Shorthand identifier for your Twilio profile.
+  -p, --profile=profile            Shorthand identifier for your profile.
   --allow-incoming=true|false      [default: true] Allow incoming calls (true/false) (defaults to true)
   --identity=identity              (required) The user identity
   --ttl=ttl                        Optional TTL for token (up to 24 hours) (value in seconds)
   --voice-app-sid=voice-app-sid    (required) The TwiML Application SID for outbound calls, starts with APXXX
 ```
 
-_See code: [src/commands/token/capability/client.js](https://github.com/twilio-labs/plugin-token/blob/v3.0.0/src/commands/token/capability/client.js)_
+_See code: [src/commands/token/capability/client.js](https://github.com/twilio-labs/plugin-token/blob/v3.0.1/src/commands/token/capability/client.js)_
 
 ## `twilio token:capability:worker`
 
@@ -61,13 +61,13 @@ USAGE
 OPTIONS
   -l=(debug|info|warn|error|none)  [default: info] Level of logging messages.
   -o=(columns|json|tsv)            [default: columns] Format of command output.
-  -p, --profile=profile            Shorthand identifier for your Twilio profile.
+  -p, --profile=profile            Shorthand identifier for your profile.
   --ttl=ttl                        Optional TTL for token (up to 24 hours) (value in seconds)
   --worker-sid=worker-sid          (required) The Worker SID for this token
   --workspace-sid=workspace-sid    (required) The Workspace SID for this token
 ```
 
-_See code: [src/commands/token/capability/worker.js](https://github.com/twilio-labs/plugin-token/blob/v3.0.0/src/commands/token/capability/worker.js)_
+_See code: [src/commands/token/capability/worker.js](https://github.com/twilio-labs/plugin-token/blob/v3.0.1/src/commands/token/capability/worker.js)_
 
 ## `twilio token:chat`
 
@@ -78,13 +78,13 @@ USAGE
 OPTIONS
   -l=(debug|info|warn|error|none)      [default: info] Level of logging messages.
   -o=(columns|json|tsv)                [default: columns] Format of command output.
-  -p, --profile=profile                Shorthand identifier for your Twilio profile.
+  -p, --profile=profile                Shorthand identifier for your profile.
   --chat-service-sid=chat-service-sid  (required) The service SID for the Chat, starts with ISXXX
   --identity=identity                  (required) The user identity
   --ttl=ttl                            Optional TTL for token (up to 24 hours) (value in seconds)
 ```
 
-_See code: [src/commands/token/chat.js](https://github.com/twilio-labs/plugin-token/blob/v3.0.0/src/commands/token/chat.js)_
+_See code: [src/commands/token/chat.js](https://github.com/twilio-labs/plugin-token/blob/v3.0.1/src/commands/token/chat.js)_
 
 ## `twilio token:flex`
 
@@ -95,13 +95,13 @@ USAGE
 OPTIONS
   -l=(debug|info|warn|error|none)  [default: info] Level of logging messages.
   -o=(columns|json|tsv)            [default: columns] Format of command output.
-  -p, --profile=profile            Shorthand identifier for your Twilio profile.
+  -p, --profile=profile            Shorthand identifier for your profile.
   --ttl=ttl                        Optional TTL for token (up to 24 hours) (value in seconds)
   --worker-sid=worker-sid          (required) The Worker SID for this token
   --workspace-sid=workspace-sid    (required) The Workspace SID for this token
 ```
 
-_See code: [src/commands/token/flex.js](https://github.com/twilio-labs/plugin-token/blob/v3.0.0/src/commands/token/flex.js)_
+_See code: [src/commands/token/flex.js](https://github.com/twilio-labs/plugin-token/blob/v3.0.1/src/commands/token/flex.js)_
 
 ## `twilio token:video`
 
@@ -112,13 +112,13 @@ USAGE
 OPTIONS
   -l=(debug|info|warn|error|none)  [default: info] Level of logging messages.
   -o=(columns|json|tsv)            [default: columns] Format of command output.
-  -p, --profile=profile            Shorthand identifier for your Twilio profile.
+  -p, --profile=profile            Shorthand identifier for your profile.
   --identity=identity              (required) The user identity
   --room-name=room-name            The name of the room this token grants access to
   --ttl=ttl                        Optional TTL for token (up to 24 hours) (value in seconds)
 ```
 
-_See code: [src/commands/token/video.js](https://github.com/twilio-labs/plugin-token/blob/v3.0.0/src/commands/token/video.js)_
+_See code: [src/commands/token/video.js](https://github.com/twilio-labs/plugin-token/blob/v3.0.1/src/commands/token/video.js)_
 
 ## `twilio token:voice`
 
@@ -129,14 +129,14 @@ USAGE
 OPTIONS
   -l=(debug|info|warn|error|none)  [default: info] Level of logging messages.
   -o=(columns|json|tsv)            [default: columns] Format of command output.
-  -p, --profile=profile            Shorthand identifier for your Twilio profile.
+  -p, --profile=profile            Shorthand identifier for your profile.
   --allow-incoming=true|false      [default: true] Allow incoming calls (true/false) (defaults to true)
   --identity=identity              (required) The user identity
   --ttl=ttl                        Optional TTL for token (up to 24 hours) (value in seconds)
   --voice-app-sid=voice-app-sid    (required) The TwiML Application SID for outbound calls, starts with APXXX
 ```
 
-_See code: [src/commands/token/voice.js](https://github.com/twilio-labs/plugin-token/blob/v3.0.0/src/commands/token/voice.js)_
+_See code: [src/commands/token/voice.js](https://github.com/twilio-labs/plugin-token/blob/v3.0.1/src/commands/token/voice.js)_
 <!-- commandsstop -->
 #  Contributing
 
