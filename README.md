@@ -127,13 +127,14 @@ USAGE
   $ twilio token:voice
 
 OPTIONS
-  -l=(debug|info|warn|error|none)  [default: info] Level of logging messages.
-  -o=(columns|json|tsv)            [default: columns] Format of command output.
-  -p, --profile=profile            Shorthand identifier for your profile.
-  --allow-incoming=true|false      [default: true] Allow incoming calls (true/false) (defaults to true)
-  --identity=identity              (required) The user identity
-  --ttl=ttl                        Optional TTL for token (up to 24 hours) (value in seconds)
-  --voice-app-sid=voice-app-sid    (required) The TwiML Application SID for outbound calls, starts with APXXX
+  -l=(debug|info|warn|error|none)            [default: info] Level of logging messages.
+  -o=(columns|json|tsv)                      [default: columns] Format of command output.
+  -p, --profile=profile                      Shorthand identifier for your profile.
+  --allow-incoming=true|false                [default: true] Allow incoming calls (true/false) (defaults to true)
+  --identity=identity                        (required) The user identity
+  --ttl=ttl                                  Optional TTL for token (up to 24 hours) (value in seconds)
+  --voice-app-sid=voice-app-sid              (required) The TwiML Application SID for outbound calls, starts with APXXX
+  --push-credential-sid=push-credential-sid  The Push Credential SID for receiving incoming call push notifications, starts with CRXXX
 ```
 
 _See code: [src/commands/token/voice.js](https://github.com/twilio-labs/plugin-token/blob/v3.0.1/src/commands/token/voice.js)_

@@ -10,6 +10,10 @@ const voiceFlags = {
     options: ['true', 'false'],
     default: 'true',
     required: false
+  }),
+  'push-credential-sid': flags.string({
+    description: 'The Push Credential SID for receiving incoming call push notifications, starts with CRXXX',
+    required: false
   })
 };
 
@@ -20,4 +24,11 @@ const validateTwimlAppSid = function(sid) {
   );
 }
 
-module.exports = { voiceFlags, validateTwimlAppSid };
+const validatePushCredentialSid = function(sid) {
+  return (
+    sid.startsWith('CR') &&
+    sid.length === 34
+  );
+}
+
+module.exports = { voiceFlags, validateTwimlAppSid, validatePushCredentialSid };
