@@ -37,7 +37,7 @@ class VoiceTokenGenerator extends TwilioClientCommand {
       incomingAllow
     });
     if (pushCredentialSid) {
-      voiceGrant.pushCredentialSid;
+      voiceGrant.pushCredentialSid = pushCredentialSid;
     }
     accessToken.addGrant(voiceGrant);
 
