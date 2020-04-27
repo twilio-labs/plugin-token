@@ -23,11 +23,22 @@ class VoiceTokenGenerator extends TwilioClientCommand {
       process.exit(1);
     }
 
+    let pushCredentialSid = this.flags['push-credential-sid'];
+    if (pushCredentialSid && !validatePushCredentialSid(pushCredentialSid)) {
+      this.logger.error(
+        'Invalid Push Credential SID, must look like CRxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+      );
+      process.exit(1);
+    }
+
     let incomingAllow = (this.flags['allow-incoming'] == 'true');
     let voiceGrant = new Twilio.jwt.AccessToken.VoiceGrant({
       outgoingApplicationSid: this.flags['voice-app-sid'],
       incomingAllow
     });
+    if (pushCredentialSid) {
+      voiceGrant.pushCredentialSid = pushCredentialSid;
+    }
     accessToken.addGrant(voiceGrant);
 
     this.logger.info('Copy/paste this voice token into your test application:');
