@@ -1,7 +1,7 @@
 {
   "name": "@twilio-labs/plugin-token",
   "description": "Generate a temporary token for use in test applications",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "author": "Twilio @twilio",
   "bugs": "https://github.com/twilio-labs/plugin-token/issues",
   "publishConfig": {
