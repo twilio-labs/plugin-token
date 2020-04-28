@@ -2,7 +2,7 @@ const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const Twilio = require('twilio');
 const createToken = require('../../helpers/accessToken.js');
 const globalFlags = require('../../helpers/globalFlags.js');
-const { voiceFlags, validateTwimlAppSid } = require('../../helpers/voiceGlobals.js');
+const { voiceFlags, validateTwimlAppSid, validatePushCredentialSid } = require('../../helpers/voiceGlobals.js');
 
 class VoiceTokenGenerator extends TwilioClientCommand {
   constructor(argv, config, secureStorage) {
