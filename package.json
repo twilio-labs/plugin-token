@@ -1,16 +1,16 @@
 {
   "name": "@twilio-labs/plugin-token",
   "description": "Generate a temporary token for use in test applications",
-  "version": "3.1.2",
+  "version": "3.1.3",
   "author": "Twilio @twilio",
   "bugs": "https://github.com/twilio-labs/plugin-token/issues",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@oclif/command": "^1.5.19",
+    "@oclif/command": "^1.6.1",
     "@oclif/config": "^1.15.1",
-    "@twilio/cli-core": "^4.3.3"
+    "@twilio/cli-core": "^5.8.0"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.22.2",
