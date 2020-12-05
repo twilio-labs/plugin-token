@@ -30,6 +30,7 @@ USAGE
 * [`twilio token:capability:client`](#twilio-tokencapabilityclient)
 * [`twilio token:capability:worker`](#twilio-tokencapabilityworker)
 * [`twilio token:chat`](#twilio-tokenchat)
+* [`twilio token:sync`](#twilio-tokensync)
 * [`twilio token:flex`](#twilio-tokenflex)
 * [`twilio token:video`](#twilio-tokenvideo)
 * [`twilio token:voice`](#twilio-tokenvoice)
@@ -90,6 +91,23 @@ OPTIONS
 ```
 
 _See code: [src/commands/token/chat.js](https://github.com/twilio-labs/plugin-token/blob/v3.1.4/src/commands/token/chat.js)_
+
+## `twilio token:sync`
+
+```
+USAGE
+  $ twilio token:sync
+
+OPTIONS
+  -l=(debug|info|warn|error|none)      [default: info] Level of logging messages.
+  -o=(columns|json|tsv)                [default: columns] Format of command output.
+  -p, --profile=profile                Shorthand identifier for your profile.
+  --sync-service-sid=sync-service-sid  (required) The service SID for the Sync, starts with ISXXX
+  --identity=identity                  (required) The user identity
+  --ttl=ttl                            Optional TTL for token (up to 24 hours) (value in seconds)
+```
+
+_See code: [src/commands/token/sync.js](https://github.com/twilio-labs/plugin-token/blob/v3.1.5/src/commands/token/sync.js)_
 
 ## `twilio token:flex`
 
