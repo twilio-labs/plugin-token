@@ -30,67 +30,19 @@ describe('createToken', function() {
     sandbox.restore();
   });
 
-  context('when TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN env vars are set', function() {
-    env = {
-      TWILIO_ACCOUNT_SID: 'ACxxxx',
-      TWILIO_AUTH_TOKEN: '123asd'
-    };
-    context('and TWILIO_API_KEY and TWILIO_API_SECRET env vars are not set', function() {
-      context('and --profile flag was not provided', function() {
-        it('exits with an error', function() {
-          envStub.value(env);
-          createToken.call(tokenGeneratorStub);
-          sinon.assert.calledWith(exitStub, 1);
-        });
-      });
-
-      context('and --profile flag was provided', function() {
-        it('returns a valid token', function() {
-          envStub.value(env);
-          tokenGeneratorStub.flags.profile = true;
-          token = createToken.call(tokenGeneratorStub);
-          sinon.assert.notCalled(exitStub);
-          expect(token).to.be.an.instanceOf(Twilio.jwt.AccessToken);
-        });
-      });
-    });
-
-    context('and TWILIO_API_KEY and TWILIO_API_SECRET env vars are set', function() {
-      it('returns a valid token', function() {
-        envStub.value({
-          ...env,
-          TWILIO_API_KEY: 'SKxxxx',
-          TWILIO_API_SECRET: 'asd123'
-        });
-        token = createToken.call(tokenGeneratorStub);
-        sinon.assert.notCalled(exitStub);
-        expect(token).to.be.an.instanceOf(Twilio.jwt.AccessToken);
-      });
-    });
-
-    context('and TWILIO_API_KEY or TWILIO_API_SECRET env vars are not set', function() {
-      it('exits with an error', function() {
-        envStub.value({
-          ...env,
-          TWILIO_API_KEY: 'SKxxxx',
-        });
-        createToken.call(tokenGeneratorStub);
-        sinon.assert.calledWith(exitStub, 1);
-        envStub.value({
-          ...env,
-          TWILIO_API_SECRET: 'asd123',
-        });
-        createToken.call(tokenGeneratorStub);
-        sinon.assert.calledWith(exitStub, 1);
-      });
+  context('when account sid and username on the twilio client are equal', function() {
+    it('exits with an error', function() {
+      tokenGeneratorStub.twilioClient.username = tokenGeneratorStub.twilioClient.accountSid;
+      createToken.call(tokenGeneratorStub);
+      sinon.assert.calledWith(exitStub, 1);
     });
   });
 
-  context('when TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN env vars are not set', function() {
+  context('when account sid and username on the twilio client are not equal', function() {
     it('returns a valid token', function() {
       token = createToken.call(tokenGeneratorStub);
-        sinon.assert.notCalled(exitStub);
-        expect(token).to.be.an.instanceOf(Twilio.jwt.AccessToken);
+      sinon.assert.notCalled(exitStub);
+      expect(token).to.be.an.instanceOf(Twilio.jwt.AccessToken);
     });
   });
 
