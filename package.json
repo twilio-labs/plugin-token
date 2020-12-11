@@ -51,6 +51,9 @@
       },
       "token:chat": {
         "description": "Generate token for use in Chat applications"
+      },
+      "token:sync": {
+        "description": "Generate token for use in Sync applications"
       }
     }
   },
