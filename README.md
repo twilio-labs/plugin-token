@@ -56,7 +56,7 @@ OPTIONS
   --voice-app-sid=voice-app-sid              (required) The TwiML Application SID for outbound calls, starts with APXXX
 ```
 
-_See code: [src/commands/token/capability/client.js](https://github.com/twilio-labs/plugin-token/blob/v3.2.0/src/commands/token/capability/client.js)_
+_See code: [src/commands/token/capability/client.js](https://github.com/twilio-labs/plugin-token/blob/v4.0.0/src/commands/token/capability/client.js)_
 
 ## `twilio token:capability:worker`
 
@@ -73,7 +73,7 @@ OPTIONS
   --workspace-sid=workspace-sid    (required) The Workspace SID for this token
 ```
 
-_See code: [src/commands/token/capability/worker.js](https://github.com/twilio-labs/plugin-token/blob/v3.2.0/src/commands/token/capability/worker.js)_
+_See code: [src/commands/token/capability/worker.js](https://github.com/twilio-labs/plugin-token/blob/v4.0.0/src/commands/token/capability/worker.js)_
 
 ## `twilio token:chat`
 
@@ -90,7 +90,7 @@ OPTIONS
   --ttl=ttl                            Optional TTL for token (up to 24 hours) (value in seconds)
 ```
 
-_See code: [src/commands/token/chat.js](https://github.com/twilio-labs/plugin-token/blob/v3.2.0/src/commands/token/chat.js)_
+_See code: [src/commands/token/chat.js](https://github.com/twilio-labs/plugin-token/blob/v4.0.0/src/commands/token/chat.js)_
 
 ## `twilio token:flex`
 
@@ -107,7 +107,7 @@ OPTIONS
   --workspace-sid=workspace-sid    (required) The Workspace SID for this token
 ```
 
-_See code: [src/commands/token/flex.js](https://github.com/twilio-labs/plugin-token/blob/v3.2.0/src/commands/token/flex.js)_
+_See code: [src/commands/token/flex.js](https://github.com/twilio-labs/plugin-token/blob/v4.0.0/src/commands/token/flex.js)_
 
 ## `twilio token:sync`
 
@@ -124,7 +124,7 @@ OPTIONS
   --ttl=ttl                            Optional TTL for token (up to 24 hours) (value in seconds)
 ```
 
-_See code: [src/commands/token/sync.js](https://github.com/twilio-labs/plugin-token/blob/v3.2.0/src/commands/token/sync.js)_
+_See code: [src/commands/token/sync.js](https://github.com/twilio-labs/plugin-token/blob/v4.0.0/src/commands/token/sync.js)_
 
 ## `twilio token:video`
 
@@ -141,7 +141,7 @@ OPTIONS
   --ttl=ttl                        Optional TTL for token (up to 24 hours) (value in seconds)
 ```
 
-_See code: [src/commands/token/video.js](https://github.com/twilio-labs/plugin-token/blob/v3.2.0/src/commands/token/video.js)_
+_See code: [src/commands/token/video.js](https://github.com/twilio-labs/plugin-token/blob/v4.0.0/src/commands/token/video.js)_
 
 ## `twilio token:voice`
 
@@ -164,7 +164,7 @@ OPTIONS
   --voice-app-sid=voice-app-sid              (required) The TwiML Application SID for outbound calls, starts with APXXX
 ```
 
-_See code: [src/commands/token/voice.js](https://github.com/twilio-labs/plugin-token/blob/v3.2.0/src/commands/token/voice.js)_
+_See code: [src/commands/token/voice.js](https://github.com/twilio-labs/plugin-token/blob/v4.0.0/src/commands/token/voice.js)_
 <!-- commandsstop -->
 #  Contributing
 
