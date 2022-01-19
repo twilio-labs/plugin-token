@@ -5,8 +5,8 @@ const globalFlags = require('../../helpers/globalFlags.js');
 const { voiceFlags, validateTwimlAppSid, validatePushCredentialSid } = require('../../helpers/voiceGlobals.js');
 
 class VoiceTokenGenerator extends TwilioClientCommand {
-  constructor(argv, config, secureStorage) {
-    super(argv, config, secureStorage);
+  constructor(argv, config) {
+    super(argv, config);
 
     this.showHeaders = true;
   }
