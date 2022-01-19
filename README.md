@@ -43,13 +43,15 @@ USAGE
 
 OPTIONS
   -l=(debug|info|warn|error|none)            [default: info] Level of logging messages.
-  -o=(columns|json|tsv)                      [default: columns] Format of command output.
+  -o=(columns|json|tsv|none)                 [default: columns] Format of command output.
   -p, --profile=profile                      Shorthand identifier for your profile.
   --allow-incoming=true|false                [default: true] Allow incoming calls (true/false) (defaults to true)
   --identity=identity                        (required) The user identity
 
   --push-credential-sid=push-credential-sid  The Push Credential SID for receiving incoming call push notifications,
                                              starts with CRXXX
+
+  --silent                                   Suppress output and logs. This is a shorthand for "-l none -o none".
 
   --ttl=ttl                                  Optional TTL for token (up to 24 hours) (value in seconds)
 
@@ -66,8 +68,9 @@ USAGE
 
 OPTIONS
   -l=(debug|info|warn|error|none)  [default: info] Level of logging messages.
-  -o=(columns|json|tsv)            [default: columns] Format of command output.
+  -o=(columns|json|tsv|none)       [default: columns] Format of command output.
   -p, --profile=profile            Shorthand identifier for your profile.
+  --silent                         Suppress output and logs. This is a shorthand for "-l none -o none".
   --ttl=ttl                        Optional TTL for token (up to 24 hours) (value in seconds)
   --worker-sid=worker-sid          (required) The Worker SID for this token
   --workspace-sid=workspace-sid    (required) The Workspace SID for this token
@@ -83,10 +86,11 @@ USAGE
 
 OPTIONS
   -l=(debug|info|warn|error|none)      [default: info] Level of logging messages.
-  -o=(columns|json|tsv)                [default: columns] Format of command output.
+  -o=(columns|json|tsv|none)           [default: columns] Format of command output.
   -p, --profile=profile                Shorthand identifier for your profile.
   --chat-service-sid=chat-service-sid  (required) The service SID for the Chat, starts with ISXXX
   --identity=identity                  (required) The user identity
+  --silent                             Suppress output and logs. This is a shorthand for "-l none -o none".
   --ttl=ttl                            Optional TTL for token (up to 24 hours) (value in seconds)
 ```
 
@@ -100,8 +104,9 @@ USAGE
 
 OPTIONS
   -l=(debug|info|warn|error|none)  [default: info] Level of logging messages.
-  -o=(columns|json|tsv)            [default: columns] Format of command output.
+  -o=(columns|json|tsv|none)       [default: columns] Format of command output.
   -p, --profile=profile            Shorthand identifier for your profile.
+  --silent                         Suppress output and logs. This is a shorthand for "-l none -o none".
   --ttl=ttl                        Optional TTL for token (up to 24 hours) (value in seconds)
   --worker-sid=worker-sid          (required) The Worker SID for this token
   --workspace-sid=workspace-sid    (required) The Workspace SID for this token
@@ -117,9 +122,10 @@ USAGE
 
 OPTIONS
   -l=(debug|info|warn|error|none)      [default: info] Level of logging messages.
-  -o=(columns|json|tsv)                [default: columns] Format of command output.
+  -o=(columns|json|tsv|none)           [default: columns] Format of command output.
   -p, --profile=profile                Shorthand identifier for your profile.
   --identity=identity                  (required) The user identity
+  --silent                             Suppress output and logs. This is a shorthand for "-l none -o none".
   --sync-service-sid=sync-service-sid  (required) The service SID for the Sync, starts with ISXXX
   --ttl=ttl                            Optional TTL for token (up to 24 hours) (value in seconds)
 ```
@@ -134,10 +140,11 @@ USAGE
 
 OPTIONS
   -l=(debug|info|warn|error|none)  [default: info] Level of logging messages.
-  -o=(columns|json|tsv)            [default: columns] Format of command output.
+  -o=(columns|json|tsv|none)       [default: columns] Format of command output.
   -p, --profile=profile            Shorthand identifier for your profile.
   --identity=identity              (required) The user identity
   --room-name=room-name            The name of the room this token grants access to
+  --silent                         Suppress output and logs. This is a shorthand for "-l none -o none".
   --ttl=ttl                        Optional TTL for token (up to 24 hours) (value in seconds)
 ```
 
@@ -151,13 +158,15 @@ USAGE
 
 OPTIONS
   -l=(debug|info|warn|error|none)            [default: info] Level of logging messages.
-  -o=(columns|json|tsv)                      [default: columns] Format of command output.
+  -o=(columns|json|tsv|none)                 [default: columns] Format of command output.
   -p, --profile=profile                      Shorthand identifier for your profile.
   --allow-incoming=true|false                [default: true] Allow incoming calls (true/false) (defaults to true)
   --identity=identity                        (required) The user identity
 
   --push-credential-sid=push-credential-sid  The Push Credential SID for receiving incoming call push notifications,
                                              starts with CRXXX
+
+  --silent                                   Suppress output and logs. This is a shorthand for "-l none -o none".
 
   --ttl=ttl                                  Optional TTL for token (up to 24 hours) (value in seconds)
 
