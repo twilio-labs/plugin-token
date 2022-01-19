@@ -5,8 +5,8 @@ const createToken = require('../../helpers/accessToken.js');
 const globalFlags = require('../../helpers/globalFlags.js');
 
 class SyncTokenGenerator extends TwilioClientCommand {
-  constructor(argv, config, secureStorage) {
-    super(argv, config, secureStorage);
+  constructor(argv, config) {
+    super(argv, config);
 
     this.showHeaders = true;
   }

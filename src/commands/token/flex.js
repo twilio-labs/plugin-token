@@ -7,8 +7,8 @@ const globalFlags = require('../../helpers/globalFlags.js');
 const { taskrouterFlags, validateWorkerSid, validateWorkspaceSid } = require('../../helpers/taskrouterGlobals.js');
 
 class FlexTokenGenerator extends TwilioClientCommand {
-  constructor(argv, config, secureStorage) {
-    super(argv, config, secureStorage);
+  constructor(argv, config) {
+    super(argv, config);
 
     this.showHeaders = true;
   }

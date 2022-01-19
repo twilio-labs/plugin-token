@@ -7,8 +7,8 @@ const TaskRouterCapability = taskrouter.TaskRouterCapability;
 const Policy = TaskRouterCapability.Policy;
 
 class WorkerCapabilityTokenGenerator extends TwilioClientCommand {
-  constructor(argv, config, secureStorage) {
-    super(argv, config, secureStorage);
+  constructor(argv, config) {
+    super(argv, config);
 
     this.showHeaders = true;
   }
