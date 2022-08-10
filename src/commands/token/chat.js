@@ -1,4 +1,4 @@
-const { flags } = require('@oclif/command');
+const { Flags } = require('@oclif/core');
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const Twilio = require('twilio');
 const createToken = require('../../helpers/accessToken.js');
@@ -43,13 +43,13 @@ class ChatTokenGenerator extends TwilioClientCommand {
 }
 
 const ChatTokenGeneratorFlags = {
-  identity: flags.string({
+  identity: Flags.string({
     description: 'The user identity for this Chat',
-    required: true,
+    required: true
   }),
-  'chat-service-sid': flags.string({
+  'chat-service-sid': Flags.string({
     description: 'The service SID for the Chat, starts with ISXXX',
-    required: true,
+    required: true
   }),
 };
 

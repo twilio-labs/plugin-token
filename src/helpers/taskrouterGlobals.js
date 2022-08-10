@@ -1,11 +1,11 @@
-const { flags } = require('@oclif/command');
+const { Flags } = require('@oclif/core');
 
 const taskrouterFlags = {
-  'worker-sid': flags.string({
+  'worker-sid': Flags.string({
     description: 'The Worker SID for this token',
     required: true,
   }),
-  'workspace-sid': flags.string({
+  'workspace-sid': Flags.string({
     description: 'The Workspace SID for this token',
     required: true,
   })

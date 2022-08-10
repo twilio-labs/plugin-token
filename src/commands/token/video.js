@@ -1,4 +1,4 @@
-const { flags } = require('@oclif/command');
+const { Flags } = require('@oclif/core');
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const Twilio = require('twilio');
 const createToken = require('../../helpers/accessToken.js');
@@ -28,7 +28,7 @@ class VideoTokenGenerator extends TwilioClientCommand {
 }
 
 const VideoTokenGeneratorFlags = {
-  'room-name': flags.string({
+  'room-name': Flags.string({
     description: 'The name of the room this token grants access to',
     required: false,
   }),

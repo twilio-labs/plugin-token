@@ -1,4 +1,4 @@
-const { flags } = require('@oclif/command');
+const { Flags } = require('@oclif/core');
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const Twilio = require('twilio');
 const createToken = require('../../helpers/accessToken.js');
@@ -43,11 +43,11 @@ class SyncTokenGenerator extends TwilioClientCommand {
 }
 
 const SyncTokenGeneratorFlags = {
-  identity: flags.string({
+  identity: Flags.string({
     description: 'The user identity for this Sync Service',
     required: true,
   }),
-  'sync-service-sid': flags.string({
+  'sync-service-sid': Flags.string({
     description: 'The service SID for the Sync, starts with ISXXX',
     required: true,
   }),
