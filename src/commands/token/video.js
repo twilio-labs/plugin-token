@@ -16,7 +16,7 @@ class VideoTokenGenerator extends TwilioClientCommand {
 
     const accessToken = createToken.call(this);
 
-    let room = this.flags['room-name'];
+    let room = await this.flags['room-name'];
     let videoGrant = new Twilio.jwt.AccessToken.VideoGrant({ room });
     accessToken.addGrant(videoGrant);
 
