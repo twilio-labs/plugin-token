@@ -2,7 +2,8 @@ const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const Twilio = require('twilio');
 const createToken = require('../../helpers/accessToken.js');
 const globalFlags = require('../../helpers/globalFlags.js');
-const { voiceFlags, validateTwimlAppSid, validatePushCredentialSid } = require('../../helpers/voiceGlobals.js');
+const { voiceFlags } = require('../../helpers/voiceGlobals.js');
+const { validateSid } = require('../../helpers/validation-helpers.js');
 
 class VoiceTokenGenerator extends TwilioClientCommand {
   constructor(argv, config) {
@@ -15,27 +16,31 @@ class VoiceTokenGenerator extends TwilioClientCommand {
     await super.run();
 
     const accessToken = createToken.call(this);
+    // all flags
+    const voiceAppSid = await this.flags['voice-app-sid'];
+    const pushCredentialSid = await this.flags['push-credential-sid'];
+    const incomingAllow = await this.flags['allow-incoming'];
 
-    if (!validateTwimlAppSid(this.flags['voice-app-sid'])) {
+    if (!validateSid('AP', voiceAppSid)) {
       this.logger.error(
         'Invalid TwiML Application SID, must look like APxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
       process.exit(1);
     }
 
-    let pushCredentialSid = this.flags['push-credential-sid'];
-    if (pushCredentialSid && !validatePushCredentialSid(pushCredentialSid)) {
+    // logic for optional pushCredential
+    if (pushCredentialSid && !validateSid('CR', pushCredentialSid)) {
       this.logger.error(
         'Invalid Push Credential SID, must look like CRxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
       process.exit(1);
     }
 
-    let incomingAllow = (this.flags['allow-incoming'] == 'true');
-    let voiceGrant = new Twilio.jwt.AccessToken.VoiceGrant({
-      outgoingApplicationSid: this.flags['voice-app-sid'],
+    const voiceGrant = new Twilio.jwt.AccessToken.VoiceGrant({
+      outgoingApplicationSid: voiceAppSid,
       incomingAllow
     });
+
     if (pushCredentialSid) {
       voiceGrant.pushCredentialSid = pushCredentialSid;
     }

@@ -17,18 +17,4 @@ const voiceFlags = {
   })
 };
 
-const validateTwimlAppSid = function(sid) {
-  return (
-    sid.startsWith('AP') &&
-    sid.length === 34
-  );
-}
-
-const validatePushCredentialSid = function(sid) {
-  return (
-    sid.startsWith('CR') &&
-    sid.length === 34
-  );
-}
-
-module.exports = { voiceFlags, validateTwimlAppSid, validatePushCredentialSid };
+module.exports = { voiceFlags };
