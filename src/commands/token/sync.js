@@ -3,6 +3,7 @@ const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const Twilio = require('twilio');
 const createToken = require('../../helpers/accessToken.js');
 const globalFlags = require('../../helpers/globalFlags.js');
+const validateSid = require('../../helpers/validatin-helpers.js');
 
 class SyncTokenGenerator extends TwilioClientCommand {
   constructor(argv, config) {
@@ -11,20 +12,13 @@ class SyncTokenGenerator extends TwilioClientCommand {
     this.showHeaders = true;
   }
 
-  validateSyncServiceSid(sid) {
-    return (
-      sid.startsWith('IS') &&
-      sid.length === 34
-    );
-  }
-
   async run() {
     await super.run();
 
     const syncServiceSid = await this.flags['sync-service-sid'];
     const accessToken = createToken.call(this);
 
-    if (!this.validateSyncServiceSid(syncServiceSid)) {
+    if (!validateSid('IS', syncServiceSid)) {
       this.logger.error(
         'Invalid Sync Service SID, must look like ISxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
