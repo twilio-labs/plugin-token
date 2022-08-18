@@ -11,19 +11,20 @@ class ChatTokenGenerator extends TwilioClientCommand {
     this.showHeaders = true;
   }
 
-  validateChatServiceSid() {
+  validateChatServiceSid(sid) {
     return (
-      this.flags['chat-service-sid'].startsWith('IS') &&
-      this.flags['chat-service-sid'].length === 34
+      sid.startsWith('IS') &&
+      sid.length === 34
     );
   }
 
   async run() {
     await super.run();
 
+    const chatServiceSid = await this.flags['chat-service-sid'];
     const accessToken = createToken.call(this);
 
-    if (!this.validateChatServiceSid()) {
+    if (!this.validateChatServiceSid(chatServiceSid)) {
       this.logger.error(
         'Invalid Chat Service SID, must look like ISxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
@@ -31,7 +32,7 @@ class ChatTokenGenerator extends TwilioClientCommand {
     }
 
     let chatGrant = new Twilio.jwt.AccessToken.ChatGrant({
-      serviceSid: this.flags['chat-service-sid'],
+      serviceSid: chatServiceSid
     });
     accessToken.addGrant(chatGrant);
 
