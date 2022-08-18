@@ -11,18 +11,4 @@ const taskrouterFlags = {
   })
 }
 
-const validateWorkerSid = function(sid) {
-  return (
-    sid.startsWith('WK') &&
-    sid.length === 34
-  );
-}
-
-const validateWorkspaceSid = function(sid) {
-  return (
-    sid.startsWith('WS') &&
-    sid.length === 34
-  );
-}
-
-module.exports = { taskrouterFlags, validateWorkerSid, validateWorkspaceSid };
+module.exports = { taskrouterFlags };
