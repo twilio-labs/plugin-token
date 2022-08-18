@@ -11,19 +11,20 @@ class SyncTokenGenerator extends TwilioClientCommand {
     this.showHeaders = true;
   }
 
-  validateSyncServiceSid() {
+  validateSyncServiceSid(sid) {
     return (
-      this.flags['sync-service-sid'].startsWith('IS') &&
-      this.flags['sync-service-sid'].length === 34
+      sid.startsWith('IS') &&
+      sid.length === 34
     );
   }
 
   async run() {
     await super.run();
 
+    const syncServiceSid = await this.flags['sync-service-sid'];
     const accessToken = createToken.call(this);
 
-    if (!this.validateSyncServiceSid()) {
+    if (!this.validateSyncServiceSid(syncServiceSid)) {
       this.logger.error(
         'Invalid Sync Service SID, must look like ISxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
@@ -31,7 +32,7 @@ class SyncTokenGenerator extends TwilioClientCommand {
     }
 
     let syncGrant = new Twilio.jwt.AccessToken.SyncGrant({
-      serviceSid: this.flags['sync-service-sid'],
+      serviceSid: syncServiceSid
     });
     accessToken.addGrant(syncGrant);
 
