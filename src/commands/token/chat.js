@@ -3,6 +3,7 @@ const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const Twilio = require('twilio');
 const createToken = require('../../helpers/accessToken.js');
 const globalFlags = require('../../helpers/globalFlags.js');
+const { validateSid } = require('../../helpers/validation-helpers.js');
 
 class ChatTokenGenerator extends TwilioClientCommand {
   constructor(argv, config) {
@@ -11,20 +12,13 @@ class ChatTokenGenerator extends TwilioClientCommand {
     this.showHeaders = true;
   }
 
-  validateChatServiceSid(sid) {
-    return (
-      sid.startsWith('IS') &&
-      sid.length === 34
-    );
-  }
-
   async run() {
     await super.run();
 
     const chatServiceSid = await this.flags['chat-service-sid'];
     const accessToken = createToken.call(this);
 
-    if (!this.validateChatServiceSid(chatServiceSid)) {
+    if (!validateSid('IS', chatServiceSid)) {
       this.logger.error(
         'Invalid Chat Service SID, must look like ISxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
