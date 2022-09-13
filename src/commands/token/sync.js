@@ -3,7 +3,7 @@ const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const Twilio = require('twilio');
 const createToken = require('../../helpers/accessToken.js');
 const globalFlags = require('../../helpers/globalFlags.js');
-const validateSid = require('../../helpers/validatin-helpers.js');
+const validateSid = require('../../helpers/validation-helpers.js');
 
 class SyncTokenGenerator extends TwilioClientCommand {
   constructor(argv, config) {
