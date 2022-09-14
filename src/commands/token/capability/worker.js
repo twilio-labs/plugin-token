@@ -30,7 +30,7 @@ class WorkerCapabilityTokenGenerator extends TwilioClientCommand {
       process.exit(1);
     }
 
-    if (!validateWorkspaceSid('WS', workspaceSid)) {
+    if (!validateSid('WS', workspaceSid)) {
       this.logger.error(
         'Invalid Workspace SID, must look like WSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
