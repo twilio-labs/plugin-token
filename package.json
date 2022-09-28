@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@oclif/core": "^1.13.10",
-    "@twilio/cli-core": "^6.0.0"
+    "@twilio/cli-core": "^7.0.0"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.22.2",
