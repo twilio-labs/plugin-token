@@ -1,7 +1,7 @@
 {
   "name": "@twilio-labs/plugin-token",
   "description": "Generate a temporary token for use in test applications",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "author": "Twilio @twilio",
   "bugs": "https://github.com/twilio-labs/plugin-token/issues",
   "publishConfig": {
@@ -12,7 +12,6 @@
     "@twilio/cli-core": "^7.0.0"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1.22.2",
     "@oclif/test": "^1.2.5",
     "@twilio/cli-test": "^2.0.2",
     "chai": "^4.2.0",
@@ -64,7 +63,6 @@
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint --ignore-path .gitignore . && npm audit",
     "prepack": "oclif-dev manifest && oclif-dev readme",
-    "test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\"",
-    "version": "oclif-dev readme && git add README.md"
+    "test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\""
   }
 }
