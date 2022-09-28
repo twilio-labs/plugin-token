@@ -1,8 +1,9 @@
-const { flags } = require('@oclif/command');
+const { Flags } = require('@oclif/core');
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const Twilio = require('twilio');
 const createToken = require('../../helpers/accessToken.js');
 const globalFlags = require('../../helpers/globalFlags.js');
+const { validateSid } = require('../../helpers/validation-helpers.js');
 
 class ChatTokenGenerator extends TwilioClientCommand {
   constructor(argv, config) {
@@ -11,19 +12,13 @@ class ChatTokenGenerator extends TwilioClientCommand {
     this.showHeaders = true;
   }
 
-  validateChatServiceSid() {
-    return (
-      this.flags['chat-service-sid'].startsWith('IS') &&
-      this.flags['chat-service-sid'].length === 34
-    );
-  }
-
   async run() {
     await super.run();
 
+    const chatServiceSid = await this.flags['chat-service-sid'];
     const accessToken = createToken.call(this);
 
-    if (!this.validateChatServiceSid()) {
+    if (!validateSid('IS', chatServiceSid)) {
       this.logger.error(
         'Invalid Chat Service SID, must look like ISxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
@@ -31,7 +26,7 @@ class ChatTokenGenerator extends TwilioClientCommand {
     }
 
     let chatGrant = new Twilio.jwt.AccessToken.ChatGrant({
-      serviceSid: this.flags['chat-service-sid'],
+      serviceSid: chatServiceSid
     });
     accessToken.addGrant(chatGrant);
 
@@ -43,13 +38,13 @@ class ChatTokenGenerator extends TwilioClientCommand {
 }
 
 const ChatTokenGeneratorFlags = {
-  identity: flags.string({
+  identity: Flags.string({
     description: 'The user identity for this Chat',
-    required: true,
+    required: true
   }),
-  'chat-service-sid': flags.string({
+  'chat-service-sid': Flags.string({
     description: 'The service SID for the Chat, starts with ISXXX',
-    required: true,
+    required: true
   }),
 };
 

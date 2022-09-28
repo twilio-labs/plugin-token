@@ -8,9 +8,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@oclif/command": "^1.6.1",
-    "@oclif/config": "^1.15.1",
-    "@twilio/cli-core": "^6.0.0"
+    "@oclif/core": "^1.13.10",
+    "@twilio/cli-core": "^7.0.0"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.22.2",

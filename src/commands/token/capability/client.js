@@ -1,7 +1,8 @@
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const ClientCapability = require('twilio').jwt.ClientCapability;
 const globalFlags = require('../../../helpers/globalFlags.js');
-const { voiceFlags, validateTwimlAppSid } = require('../../../helpers/voiceGlobals.js');
+const { voiceFlags } = require('../../../helpers/voiceGlobals.js');
+const { validateSid } = require('../../../helpers/validation-helpers.js');
 
 class ClientCapabilityTokenGenerator extends TwilioClientCommand {
   constructor(argv, config) {
@@ -13,14 +14,17 @@ class ClientCapabilityTokenGenerator extends TwilioClientCommand {
   async run() {
     await super.run();
 
-    let ttl = this.flags['ttl'];
+    const voiceAppSid = await this.flags['voice-app-sid'];
+    const ttl = await this.flags['ttl'];
+    const incomingAllow = await this.flags['allow-incoming'];
+    const identity = await this.flags['identity'];
     const capability = new ClientCapability({
       accountSid: this.twilioClient.accountSid,
       authToken: this.twilioClient.password,
       ttl
     });
 
-    if (!validateTwimlAppSid(this.flags['voice-app-sid'])) {
+    if (!validateSid('AP', voiceAppSid)) {
       this.logger.error(
         'Invalid TwiML Application SID, must look like APxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
@@ -28,12 +32,11 @@ class ClientCapabilityTokenGenerator extends TwilioClientCommand {
     }
 
     capability.addScope(new ClientCapability.OutgoingClientScope({
-      applicationSid: this.flags['voice-app-sid']
+      applicationSid: voiceAppSid
     }));
 
-    let incomingAllow = (this.flags['allow-incoming'] == 'true');
     if (incomingAllow) {
-      capability.addScope(new ClientCapability.IncomingClientScope(this.flags['identity']))
+      capability.addScope(new ClientCapability.IncomingClientScope(identity))
     }
 
     this.logger.info('Copy/paste this voice token into your test application:');

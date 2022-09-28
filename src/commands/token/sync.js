@@ -1,8 +1,9 @@
-const { flags } = require('@oclif/command');
+const { Flags } = require('@oclif/core');
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const Twilio = require('twilio');
 const createToken = require('../../helpers/accessToken.js');
 const globalFlags = require('../../helpers/globalFlags.js');
+const { validateSid } = require('../../helpers/validation-helpers.js');
 
 class SyncTokenGenerator extends TwilioClientCommand {
   constructor(argv, config) {
@@ -11,19 +12,13 @@ class SyncTokenGenerator extends TwilioClientCommand {
     this.showHeaders = true;
   }
 
-  validateSyncServiceSid() {
-    return (
-      this.flags['sync-service-sid'].startsWith('IS') &&
-      this.flags['sync-service-sid'].length === 34
-    );
-  }
-
   async run() {
     await super.run();
 
+    const syncServiceSid = await this.flags['sync-service-sid'];
     const accessToken = createToken.call(this);
 
-    if (!this.validateSyncServiceSid()) {
+    if (!validateSid('IS', syncServiceSid)) {
       this.logger.error(
         'Invalid Sync Service SID, must look like ISxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
@@ -31,7 +26,7 @@ class SyncTokenGenerator extends TwilioClientCommand {
     }
 
     let syncGrant = new Twilio.jwt.AccessToken.SyncGrant({
-      serviceSid: this.flags['sync-service-sid'],
+      serviceSid: syncServiceSid
     });
     accessToken.addGrant(syncGrant);
 
@@ -43,11 +38,11 @@ class SyncTokenGenerator extends TwilioClientCommand {
 }
 
 const SyncTokenGeneratorFlags = {
-  identity: flags.string({
+  identity: Flags.string({
     description: 'The user identity for this Sync Service',
     required: true,
   }),
-  'sync-service-sid': flags.string({
+  'sync-service-sid': Flags.string({
     description: 'The service SID for the Sync, starts with ISXXX',
     required: true,
   }),

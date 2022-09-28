@@ -1,11 +1,11 @@
-const { flags } = require('@oclif/command');
+const { Flags } = require('@oclif/core');
 
 const globalFlags = {
-  identity: flags.string({
+  identity: Flags.string({
     description: 'The user identity',
     required: true,
   }),
-  ttl: flags.integer({
+  ttl: Flags.integer({
     description: 'Optional TTL for token (up to 24 hours) (value in seconds)',
     required: false,
   })

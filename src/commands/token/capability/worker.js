@@ -1,6 +1,7 @@
 const { TwilioClientCommand } = require('@twilio/cli-core').baseCommands;
 const globalFlags = require('../../../helpers/globalFlags.js');
-const { taskrouterFlags, validateWorkerSid, validateWorkspaceSid } = require('../../../helpers/taskrouterGlobals.js');
+const { taskrouterFlags } = require('../../../helpers/taskrouterGlobals.js');
+const { validateSid } = require('../../../helpers/validation-helpers.js');
 const taskrouter = require('twilio').jwt.taskrouter;
 const util = taskrouter.util;
 const TaskRouterCapability = taskrouter.TaskRouterCapability;
@@ -16,17 +17,20 @@ class WorkerCapabilityTokenGenerator extends TwilioClientCommand {
   async run() {
     await super.run();
 
+    const workerSid = await this.flags['worker-sid'];
+    const workspaceSid = await this.flags['workspace-sid'];
+    let ttl = await this.flags['ttl'];
     const TASKROUTER_BASE_URL = 'https://taskrouter.twilio.com';
     const version = 'v1';
 
-    if (!validateWorkerSid(this.flags['worker-sid'])) {
+    if (!validateSid('WK', workerSid)) {
       this.logger.error(
         'Invalid Worker SID, must look like WKxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
       process.exit(1);
     }
 
-    if (!validateWorkspaceSid(this.flags['workspace-sid'])) {
+    if (!validateSid('WS', workspaceSid)) {
       this.logger.error(
         'Invalid Workspace SID, must look like WSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       );
@@ -35,10 +39,7 @@ class WorkerCapabilityTokenGenerator extends TwilioClientCommand {
 
     const accountSid = this.twilioClient.accountSid;
     const authToken = this.twilioClient.password;
-    const workspaceSid = this.flags['workspace-sid'];
-    const workerSid = this.flags['worker-sid'];
 
-    let ttl = this.flags['ttl'];
     const capability = new TaskRouterCapability({
       accountSid,
       authToken,
