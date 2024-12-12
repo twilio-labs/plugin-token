@@ -14,7 +14,8 @@ const createToken = function() {
   const accessToken = new Twilio.jwt.AccessToken(
     this.twilioClient.accountSid,
     this.twilioClient.username,
-    this.twilioClient.password
+    this.twilioClient.password,
+    { identity: this.flags.identity }   
   );
 
   if (this.flags['ttl']) {
