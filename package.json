@@ -12,11 +12,10 @@
     "@twilio/cli-core": "^7.0.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@oclif/test": "^1.2.5",
     "@twilio/cli-test": "^2.0.2",
     "chai": "^4.2.0",
-    "eslint": "^4.19.1",
-    "eslint-config-oclif": "^1.5.1",
     "globby": "^8.0.2",
     "mocha": "^8.2.1",
     "nyc": "^14.1.1",
