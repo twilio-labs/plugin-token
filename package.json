@@ -1,67 +1,63 @@
 {
-  "name": "@twilio-labs/plugin-token",
-  "description": "Generate a temporary token for use in test applications",
-  "version": "5.0.0",
-  "author": "Twilio @twilio",
-  "bugs": "https://github.com/twilio-labs/plugin-token/issues",
-  "publishConfig": {
-    "access": "public"
-  },
-  "dependencies": {
-    "@oclif/core": "^1.13.10",
-    "@twilio/cli-core": "^7.0.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@oclif/test": "^1.2.5",
-    "@twilio/cli-test": "^2.0.2",
-    "chai": "^4.2.0",
-    "globby": "^8.0.2",
-    "mocha": "^8.2.1",
-    "nyc": "^14.1.1",
-    "sinon": "^9.2.1"
-  },
-  "engines": {
-    "node": ">=8.0.0"
-  },
-  "files": [
-    "/npm-shrinkwrap.json",
-    "/oclif.manifest.json",
-    "/src",
-    "/yarn.lock"
-  ],
-  "homepage": "https://github.com/twilio-labs/plugin-token",
-  "keywords": [
-    "oclif-plugin"
-  ],
-  "license": "MIT",
-  "oclif": {
-    "name": "token",
-    "commands": "./src/commands",
-    "bin": "twilio",
-    "devPlugins": [
-      "@oclif/plugin-help"
-    ],
-    "topics": {
-      "token": {
-        "description": "Generate a temporary token for use in test applications"
-      },
-      "token:chat": {
-        "description": "Generate token for use in Chat applications"
-      },
-      "token:sync": {
-        "description": "Generate token for use in Sync applications"
-      }
-    }
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/twilio-labs/plugin-token.git"
-  },
-  "scripts": {
-    "postpack": "rm -f oclif.manifest.json",
-    "posttest": "eslint --ignore-path .gitignore . && npm audit",
-    "prepack": "oclif-dev manifest && oclif-dev readme",
-    "test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\""
-  }
+	"name": "@twilio-labs/plugin-token",
+	"description": "Generate a temporary token for use in test applications",
+	"version": "5.0.0",
+	"author": "Twilio @twilio",
+	"bugs": "https://github.com/twilio-labs/plugin-token/issues",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"@oclif/core": "^1.13.10",
+		"@twilio/cli-core": "^7.0.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@oclif/test": "^1.2.5",
+		"@twilio/cli-test": "^2.0.2",
+		"chai": "^4.2.0",
+		"globby": "^8.0.2",
+		"mocha": "^8.2.1",
+		"nyc": "^14.1.1",
+		"sinon": "^9.2.1"
+	},
+	"engines": {
+		"node": ">=8.0.0"
+	},
+	"files": [
+		"/npm-shrinkwrap.json",
+		"/oclif.manifest.json",
+		"/src",
+		"/yarn.lock"
+	],
+	"homepage": "https://github.com/twilio-labs/plugin-token",
+	"keywords": ["oclif-plugin"],
+	"license": "MIT",
+	"oclif": {
+		"name": "token",
+		"commands": "./src/commands",
+		"bin": "twilio",
+		"devPlugins": ["@oclif/plugin-help"],
+		"topics": {
+			"token": {
+				"description": "Generate a temporary token for use in test applications"
+			},
+			"token:chat": {
+				"description": "Generate token for use in Chat applications"
+			},
+			"token:sync": {
+				"description": "Generate token for use in Sync applications"
+			}
+		}
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/twilio-labs/plugin-token.git"
+	},
+	"scripts": {
+		"postpack": "rm -f oclif.manifest.json",
+		"posttest": "eslint --ignore-path .gitignore . && npm audit",
+		"prepack": "oclif-dev manifest && oclif-dev readme",
+		"test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\""
+	}
 }
