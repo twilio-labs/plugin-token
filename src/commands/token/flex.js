@@ -7,53 +7,53 @@ const { taskrouterFlags } = require('../../helpers/taskrouterGlobals.js');
 const { validateSid } = require('../../helpers/validation-helpers.js');
 
 class FlexTokenGenerator extends TwilioClientCommand {
-  constructor(argv, config) {
-    super(argv, config);
+	constructor(argv, config) {
+		super(argv, config);
 
-    this.showHeaders = true;
-  }
+		this.showHeaders = true;
+	}
 
-  async run() {
-    await super.run();
+	async run() {
+		await super.run();
 
-    const workerSid = await this.flags['worker-sid'];
-    const workspaceSid = await this.flags['workspace-sid'];
-    const accessToken = createToken.call(this);
+		const workerSid = await this.flags['worker-sid'];
+		const workspaceSid = await this.flags['workspace-sid'];
+		const accessToken = createToken.call(this);
 
-    if (!validateSid('WK', workerSid)) {
-      this.logger.error(
-        'Invalid Worker SID, must look like WKxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-      );
-      process.exit(1);
-    }
+		if (!validateSid('WK', workerSid)) {
+			this.logger.error(
+				'Invalid Worker SID, must look like WKxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+			);
+			process.exit(1);
+		}
 
-    if (!validateSid('WS', workspaceSid)) {
-      this.logger.error(
-        'Invalid Workspace SID, must look like WSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-      );
-      process.exit(1);
-    }
+		if (!validateSid('WS', workspaceSid)) {
+			this.logger.error(
+				'Invalid Workspace SID, must look like WSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+			);
+			process.exit(1);
+		}
 
-    let flexGrant = new Twilio.jwt.AccessToken.TaskRouterGrant({
-      workerSid,
-      workspaceSid,
-      role: 'worker'
-    });
-    accessToken.addGrant(flexGrant);
+		const flexGrant = new Twilio.jwt.AccessToken.TaskRouterGrant({
+			workerSid,
+			workspaceSid,
+			role: 'worker',
+		});
+		accessToken.addGrant(flexGrant);
 
-    this.logger.info('Copy/paste this video token into your test application:');
-    this.output({ jwt: accessToken.toJwt() }, undefined, {
-      showHeaders: false,
-    });
-  }
+		this.logger.info('Copy/paste this video token into your test application:');
+		this.output({ jwt: accessToken.toJwt() }, undefined, {
+			showHeaders: false,
+		});
+	}
 }
 
-let globals = { ...globalFlags };
-delete globals.identity;
+const globals = { ...globalFlags };
+globals.identity = undefined;
 
 FlexTokenGenerator.flags = Object.assign(
-  taskrouterFlags,
-  TwilioClientCommand.flags,
-  globals,
+	taskrouterFlags,
+	TwilioClientCommand.flags,
+	globals,
 );
 module.exports = FlexTokenGenerator;
