@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  tests:
+  linter:
     if: github.repository == 'twilio-labs/plugin-token'
     runs-on: ubuntu-latest
     steps:
