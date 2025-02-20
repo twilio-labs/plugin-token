@@ -1,7 +1,7 @@
 {
 	"name": "@twilio-labs/plugin-token",
 	"description": "Generate a temporary token for use in test applications",
-	"version": "5.0.0",
+	"version": "6.0.0",
 	"author": "Twilio @twilio",
 	"bugs": "https://github.com/twilio-labs/plugin-token/issues",
 	"publishConfig": {
@@ -31,13 +31,17 @@
 		"/yarn.lock"
 	],
 	"homepage": "https://github.com/twilio-labs/plugin-token",
-	"keywords": ["oclif-plugin"],
+	"keywords": [
+		"oclif-plugin"
+	],
 	"license": "MIT",
 	"oclif": {
 		"name": "token",
 		"commands": "./src/commands",
 		"bin": "twilio",
-		"devPlugins": ["@oclif/plugin-help"],
+		"devPlugins": [
+			"@oclif/plugin-help"
+		],
 		"topics": {
 			"token": {
 				"description": "Generate a temporary token for use in test applications"
