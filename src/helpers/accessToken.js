@@ -16,6 +16,7 @@ const createToken = function () {
 		this.twilioClient.accountSid,
 		this.twilioClient.username,
 		this.twilioClient.password,
+		{ identity: this.flags.identity },
 	);
 
 	if (this.flags.ttl) {
