@@ -59,9 +59,9 @@
 		"biome:format:write": "npx @biomejs/biome format --write .",
 		"biome:lint": "npx @biomejs/biome lint .",
 		"biome:lint:write": "npx @biomejs/biome lint --write .",
+		"coverage": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\"",
 		"postpack": "rm -f oclif.manifest.json",
-		"posttest": "eslint --ignore-path .gitignore . && npm audit",
 		"prepack": "oclif-dev manifest && oclif-dev readme",
-		"test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\""
+		"test": "mocha --forbid-only \"test/**/*.test.js\""
 	}
 }
