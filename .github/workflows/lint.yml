@@ -1,0 +1,24 @@
+name: "Test Suite: Linter"
+
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  linter:
+    if: github.repository == 'twilio-labs/plugin-token'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: current
+    - name: Run npm install
+      run: npm install
+    - name: Run npm run biome:lint
+      run: npm run biome:lint
