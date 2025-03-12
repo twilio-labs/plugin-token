@@ -49,7 +49,7 @@ class FlexTokenGenerator extends TwilioClientCommand {
 }
 
 const globals = { ...globalFlags };
-globals.identity = undefined;
+delete globals.identity;
 
 FlexTokenGenerator.flags = Object.assign(
 	taskrouterFlags,
