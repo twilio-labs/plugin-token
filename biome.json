@@ -13,8 +13,8 @@
 		"rules": {
 			"recommended": true,
 			"performance": {
-        "noDelete": "warn"
-      }
+				"noDelete": "warn"
+			}
 		}
 	}
 }
