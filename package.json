@@ -19,6 +19,7 @@
 		"globby": "^8.0.2",
 		"mocha": "^8.2.1",
 		"nyc": "^14.1.1",
+		"oclif": "^4.17.32",
 		"sinon": "^9.2.1"
 	},
 	"engines": {
@@ -31,13 +32,17 @@
 		"/yarn.lock"
 	],
 	"homepage": "https://github.com/twilio-labs/plugin-token",
-	"keywords": ["oclif-plugin"],
+	"keywords": [
+		"oclif-plugin"
+	],
 	"license": "MIT",
 	"oclif": {
 		"name": "token",
 		"commands": "./src/commands",
 		"bin": "twilio",
-		"devPlugins": ["@oclif/plugin-help"],
+		"devPlugins": [
+			"@oclif/plugin-help"
+		],
 		"topics": {
 			"token": {
 				"description": "Generate a temporary token for use in test applications"
@@ -60,8 +65,10 @@
 		"biome:lint": "npx @biomejs/biome lint .",
 		"biome:lint:write": "npx @biomejs/biome lint --write .",
 		"coverage": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\"",
+		"oclif:manifest": "oclif manifest",
+		"oclif:readme": "oclif manifest",
 		"postpack": "rm -f oclif.manifest.json",
-		"prepack": "oclif-dev manifest && oclif-dev readme",
+		"prepack": "npm run oclif:manifest && oclif:readme",
 		"test": "mocha --forbid-only \"test/**/*.test.js\""
 	}
 }
