@@ -64,7 +64,7 @@
 		"oclif:manifest": "oclif manifest",
 		"oclif:readme": "oclif readme",
 		"postpack": "rm -f oclif.manifest.json",
-		"prepack": "npm run oclif:manifest && oclif:readme",
+		"prepack": "npm run oclif:manifest && npm run oclif:readme",
 		"test": "mocha --forbid-only \"test/**/*.test.js\""
 	}
 }
