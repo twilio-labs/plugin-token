@@ -25,7 +25,9 @@ describe('createToken', () => {
 			logger: {
 				error: () => '',
 			},
-			flags: {},
+			flags: {
+				identity: 'hello@test.com',
+			},
 		};
 	});
 
