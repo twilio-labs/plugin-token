@@ -106,7 +106,7 @@ class WorkerCapabilityTokenGenerator extends TwilioClientCommand {
 	}
 }
 
-const {_identity, globals} = { ...globalFlags };
+const { _identity, globals } = { ...globalFlags };
 
 WorkerCapabilityTokenGenerator.flags = Object.assign(
 	taskrouterFlags,

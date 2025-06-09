@@ -48,7 +48,7 @@ class FlexTokenGenerator extends TwilioClientCommand {
 	}
 }
 
-const {_identity, globals} = { ...globalFlags };
+const { _identity, globals } = { ...globalFlags };
 
 FlexTokenGenerator.flags = Object.assign(
 	taskrouterFlags,
