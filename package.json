@@ -60,8 +60,8 @@
 		"coverage": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\"",
 		"oclif:manifest": "oclif manifest",
 		"oclif:readme": "oclif readme",
-		"postpack": "rm -f oclif.manifest.json",
 		"prepack": "npm run oclif:manifest && npm run oclif:readme",
+		"postpack": "rm -f oclif.manifest.json",
 		"test": "mocha --forbid-only \"test/**/*.test.js\"",
 		"updates:check": "npx npm-check-updates",
 		"updates:update": "npx npm-check-updates -u"
