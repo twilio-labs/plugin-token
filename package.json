@@ -12,7 +12,7 @@
 		"@twilio/cli-core": "^7.27.2"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
+		"@biomejs/biome": "^2.0.5",
 		"chai": "^5.2.0",
 		"mocha": "^11.1.0",
 		"nyc": "^17.1.0",
@@ -29,13 +29,17 @@
 		"/yarn.lock"
 	],
 	"homepage": "https://github.com/twilio-labs/plugin-token",
-	"keywords": ["oclif-plugin"],
+	"keywords": [
+		"oclif-plugin"
+	],
 	"license": "MIT",
 	"oclif": {
 		"name": "token",
 		"commands": "./src/commands",
 		"bin": "twilio",
-		"devPlugins": ["@oclif/plugin-help"],
+		"devPlugins": [
+			"@oclif/plugin-help"
+		],
 		"topics": {
 			"token": {
 				"description": "Generate a temporary token for use in test applications"
