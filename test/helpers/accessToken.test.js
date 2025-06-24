@@ -7,16 +7,11 @@ const createToken = require('../../src/helpers/accessToken.js');
 const expect = chai.expect;
 
 describe('createToken', () => {
-	let sandbox;
-	let tokenGeneratorStub;
-	let exitStub;
-	let envStub;
-
 	beforeEach(() => {
-		sandbox = sinon.createSandbox();
-		envStub = sandbox.stub(process, 'env').value({});
-		exitStub = sandbox.stub(process, 'exit');
-		tokenGeneratorStub = {
+		const _sandbox = sinon.createSandbox();
+		const _envStub = _sandbox.stub(process, 'env').value({});
+		const _exitStub = _sandbox.stub(process, 'exit');
+		const _tokenGeneratorStub = {
 			twilioClient: {
 				accountSid: 'ACxxxx',
 				username: 'test',
